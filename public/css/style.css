@@ -8,3 +8,7 @@ body{
 h1{
     color: brown;
 }
+
+.logo{
+    padding-left: 20px;
+}
