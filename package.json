@@ -1,0 +1,23 @@
+{
+  "name": "cardapio",
+  "version": "1.0.0",
+  "description": "cardapio de produtos",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WellingtonSalgado/cardapio-online.git"
+  },
+  "author": "Wellington Salgado",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WellingtonSalgado/cardapio-online/issues"
+  },
+  "homepage": "https://github.com/WellingtonSalgado/cardapio-online#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "jquery": "^3.3.1"
+  }
+}
