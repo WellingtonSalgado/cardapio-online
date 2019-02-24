@@ -5,10 +5,19 @@
 body{
     background-color: #f6f6f6;
 }
-h1{
-    color: brown;
-}
 
 .logo{
     padding-left: 20px;
+}
+.tituloMenus{
+	font-family: 'Parisienne', cursive;
+	text-align: left;
+}
+.delicias{
+	text-transform: uppercase;
+	font-weight: 400;
+}
+.listaProdutos{
+	font-family: 'Parisienne',cursive;
+	border-radius: 10px;
 }

@@ -5,8 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-    <!--Google Icons-->
+    <!--Google Icons e Fonts-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Parisienne" rel="stylesheet">
+
 
     <!--Custom styles-->
     <link rel="stylesheet" href="css/style.css">
@@ -20,36 +22,41 @@
     <!--javascripts-->
     <script src="app.js"></script>
     <script src="js/index.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
 
-    <title>Setores</title>
+    <title>Delícias do Trigo</title>
 </head>
 <body>
     <div class="nav-fixed">
         <nav>
-            <div class="nav-wrapper s12">
-                <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons left logo">fastfood</i></a>
-                <a href="#" class="brand-logo hide-on-med-and-down left">Cardápio</a>
+            <div class="nav-wrapper s12 red darken-4">
+                <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons left logo">menu</i></a>
+                <a href="#" class="brand-logo tituloMenus">Cardápio</a>
             </div>
         </nav>
 
         <ul id="slide-out" class="sidenav">
-                <li><div class="user-view">
-                        <div class="background">
-                            <img src="images/office.jpg">
-                        </div>
-                        <a href="#user"><img class="circle" src="images/yuna.jpg"></a>
-                        <a href="#name"><span class="white-text name">John Doe</span></a>
-                        <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
-                    </div>
-                </li>
-                <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
-                <li><a href="#!">Second Link</a></li>
-                <li><div class="divider"></div></li>
-                <li><a class="subheader">Subheader</a></li>
-                <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+                <li> <a href="#" class="waves-effect red lighten-2 white-text"> <i class="material-icons yellow-text">spa</i><span class="delicias valign-wrapper">Delícias do Trigo</span></a></li>
+                <li><a href="#!"><i class="material-icons red-text">home</i>Home</a></li>
+                <li><a href="#!" class="waves-effect"><i class="material-icons red-text">event</i>Eventos</a></li>
+                <li><a href="#" class="waves-effect"><i class="material-icons red-text">list</i> Seções</a></li>
+                <li><a class="waves-effect" href="#!"><i class="material-icons red-text">info</i> Sobre</a></li>
         </ul>
 
-    </div>  
+    </div> 
+
+    <!--Conteiner-->
+
+    <div class="row container">
+            
+        <ul class="collapsible listaProdutos">
+            <li class="silver lighten-3">
+                <div class="collapsible-header orange lighten-2 listaProdutos">Primeira Seção</div>
+                <div class="collapsible-body">Itens Aqui</div>
+            </li>
+        </ul>
+
+    </div>
 
     
 
