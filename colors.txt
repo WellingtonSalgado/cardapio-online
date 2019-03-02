@@ -1,0 +1,4 @@
+beje = #d9c3b0
+marrom = #73564f
+vermelho = #50251e
+cinza escuro = #786e61

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
     <!--Google Icons e Fonts-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
     <link href="https://fonts.googleapis.com/css?family=Parisienne" rel="stylesheet">
     <link rel="stylesheet" href="iconfont/material-icons.css">
 
@@ -14,107 +14,56 @@
     <!--Custom styles-->
     <link rel="stylesheet" href="css/style.css">
 
-    <!--Materialize-->
-    <link rel="stylesheet" href="css/materialize.min.css">
-
     <!--Jquery-->
     <script src="js/jquery.min.js"></script>
 
     <!--javascripts-->
     <script src="app.js"></script>
     <script src="js/index.js"></script>
-    <script src="js/materialize.min.js"></script>
 
-    <title>Delícias do Trigo</title>
+    <title>Cardapio</title>
 </head>
 <body>
-    <div class="nav-fixed">
+    <!--Nav Bar-->
+    <div>
         <nav>
-            <div class="nav-wrapper s12 red darken-4">
-                <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons left logo">menu</i></a>
-                <a href="#" class="brand-logo tituloMenus">Cardápio</a>
-            </div>
+            <span>Cardapio</span>
         </nav>
-
-        <ul id="slide-out" class="sidenav">
-                <li> <a href="#" class="waves-effect red lighten-2 white-text"> <i class="material-icons yellow-text">spa</i><span class="delicias valign-wrapper">Delícias do Trigo</span></a></li>
-                <li><a href="#!"><i class="material-icons red-text">home</i>Home</a></li>
-                <li><a href="#!" class="waves-effect"><i class="material-icons red-text">event</i>Eventos</a></li>
-                <li><a href="#" class="waves-effect"><i class="material-icons red-text">list</i> Seções</a></li>
-                <li><a class="waves-effect" href="#!"><i class="material-icons red-text">info</i> Sobre</a></li>
-        </ul>
-
-    </div> 
-
-    <!--Conteiner-->
-
-    <div class="row container">
-            
-        <ul class="collapsible listaProdutos">
-            <li class="silver lighten-3">
-                <div class="collapsible-header orange lighten-2 tituloMenus">Cafeteria</div>
-                <div class="collapsible-body">
-                    <div class="produtos">Tapiocas</div>
-                    <ul>
-                        <li>594. Tapioca sem Recheio R$ 1,80</li>
-                        <li>568. Tapioca com Manteiga R$ 2,00</li>
-                        <li>1046. Tapioca com Coco Salgado na Massa R$ 4,00</li>
-                        <li>593. Tapioca com Queijo Coalho R$ 4,50</li>
-                    </ul>
-
-                </div> 
-            </li>
-        </ul>
-
-        <ul class="collapsible listaProdutos">
-            <li class="silver lighten-3">
-                <div class="collapsible-header orange lighten-2 tituloMenus">Petiscos</div>
-                <div class="collapsible-body">
-                    <div class="produtos">Petiscos</div>
-                    <ul>
-                            <li>795. Pão de Alho   R$ 5,50</li>
-                            <li>792. Batata Frita R$ 10,00</li>
-                            <li>796. Macaxeira Frita R$ 10,00</li>
-                            <li>789. Queijo Grelhado (200g) R$ 12,00</li>
-                        </ul>
-                </div>
-            </li>
-        </ul>
-
-        <ul class="collapsible listaProdutos">
-            <li class="silver lighten-3">
-                <div class="collapsible-header orange lighten-2 tituloMenus">Beirutes</div>
-                <div class="collapsible-body">
-                    <div class="produtos">Beitutes</div>
-                    <ul>
-                        <li>741. Beirute Tradicional R$ 13,50</li>
-                        <li>145. Beirute de Frango R$ 14,00</li>
-                        <li>740. Beirute de Carne de Sol R$ 16,90</li>
-                        <li>738. Beirute de Filé R$ 16,90</li>
-                    </ul>
-                </div>
-            </li>
-        </ul>
-
-        <ul class="collapsible listaProdutos">
-            <li class="silve lighten-3">
-                <div class="collapsible-header orange lighten-2 tituloMenus">Sanduiches</div>
-                <div class="collapsible-body">
-                    <div class="produtos">Sanduiches</div>
-                    <ul>
-                        <li>160. Cachorro Quente R$ 4,50</li>
-                        <li>730. Hamburguer R$ 4,50</li>
-                        <li>769. Cachorro Quente Especial R$ 6,00</li>
-                        <li>731. X-burguer R$ 6,00</li>
-                    </ul>
-                </div>
-            </li>
-        </ul>
-
     </div>
 
-    
-
-    
+    <!--Conteudo-->
+    <div id="conteudo">
+        <!--Menus-->
+        <div id="menus">
+            <span>Cafeteria</span>
+        </div>
+        <div id="produtos">
+            <table>
+                <tr>
+                    <td>Tapioca Nordestina</td>
+                    <td>............</td>
+                    <td>R$ 7,90</td>
+                </tr>
+                <tr>
+                    <td>Tapioca Frango</td>
+                    <td>............</td>
+                    <td>R$ 4,50</td>
+                </tr>
+                <tr>
+                    <td>Tapioca Catufrango</td>
+                    <td>............</td>
+                    <td>R$ 4,50</td>
+                </tr>
+                <tr>
+                    <td>Café P</td>
+                    <td>............</td>
+                    <td>R$ 1,80</td>
+                </tr>
+            </table>
+            <div id="line">
+                <div class="produto">Tapioca Nordestina</div><div class="preco">R$ 7,90</div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

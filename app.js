@@ -1,5 +1,8 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+
+var produtos = require('./controlers/products.js')
+
 const app = express()
 
 const PORT = 3000
@@ -13,30 +16,25 @@ app.get('/', (req, res)=>{
     res.status(200).sendFile(__dirname + '/index.html' )
 });
 
-app.get('/login', (req, res)=>{
-    res.status(200).sendFile(__dirname + '/login.html')
-    let dados = req.query
-    let usuario = dados.user;
-    let senha = dados.pass;
-    if(usuario == 'wellington' && senha == 'welldev' && dados != undefined){
-        console.log('Usuario Aceito');
-        console.log(req.query);
-    }else{
-        console.log('Usuario Invalido');
-    }
-});
-
-app.post('/login', (req, res)=>{
-    let dados = req.body;
-    
-
-    res.send(dados);
-});
-
 app.get('/admin', (req, res)=>{
     res.status(200).sendFile(__dirname + '/admin.html');
+});
+
+app.post('/admin', (req, res)=>{
+    //console.log(req.body);
+    let data = req.body;
+    let user = data.usuario;
+    let pass = data.senha;
+    usuario(user,pass);
+    res.status(200).send('Post no admin');
+
+});
+
+app.get('/products', (req, res)=>{
+    res.status(200).send(produtos);
 })
 
 app.listen(PORT, ()=>{
     console.log(`Servidor ouvindo na porta: ${PORT}`)
+    //console.log(produtos)
 })
