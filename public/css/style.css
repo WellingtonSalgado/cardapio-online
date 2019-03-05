@@ -2,84 +2,126 @@
     margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-size: 10px;
+	font-size: 30px;
+	user-select: none;
 }
 body{
-    background-color: #e7d7c8;
+	background-image: linear-gradient(45deg,#ecd7d3,#dad3d2);
 }
 nav{
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
 	text-align: center;
-	background-color: #cfb5a2;
-	box-shadow: 0px 0px 3px 1px #786e61;
-	line-height: 50px;
-	z-index: 200;
-	
+	font-family: cursive;
+	color: #915b5b;
 }
-table{
+#iconeMenu{
 	display: block;
-	position: relative;
-}
-
-td{
-	padding: 10px;
-	text-align: left;
-	font-size: 1.4em;
-}
-nav > span{
-	color: #582e28;
-	font-family: "Parisienne", cursive;
-	font-weight: 800;
-	font-size: 3em;
-}
-
-.line{
-	position: relative;
-	display: block;
-	overflow: auto;
-	padding: 10px 0px;
-	color: #582e28;
-	border-bottom: 2px dashed #582e28;
-}
-
-.line .produto{
-	text-align: left;
-	float: left;
 	font-size: 1.5em;
-	font-weight: 700;
-	letter-spacing: 2px;
 }
-.line .preco{
-	text-align: right;
+
+#conteudo{
+	margin: 10px;
+	text-align: center;
+}
+.cards{
+	position: relative;
+	height: 150px;
+	border-radius: 5px;
+	margin: 20px 10px;
+	background-color: white;
+	box-shadow: 0px 2px 3px silver;
+	display: block;
+	transition: transform 0.3s;
+}
+.eventos{
+	margin: 10px;
+	border-radius: 5px;
+	height: 150px;
+	box-shadow: 0px 2px 5px silver;
+	background-color: white;
+}
+.irProdutos{
 	float: right;
-	font-size: 1.5em;
+}
+.irProdutos i{
+	padding-left: 20px;
+	text-align: right;
+	transform: scaleX(-1);
+}
+.irProdutos i::after{
+	clear: both;
+}
+#cafeteria{
+	background-image: linear-gradient(-45deg,#aa4754,#cc3450,#aa4754);
+}
+#cafeteria h3{
+	padding: 5px 10px;
+	font-size: 0.8em;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	font-weight: 500;
+	color: rgba(255,255,255, 0.9);
+	text-align: left;
 	letter-spacing: 1px;
 }
-#menus{
+#cafeteria p{
+	font-size: 0.6em;
+	font-style: italic;
+	padding: 5px;
+	font-weight: 200;
 	text-align: center;
-	background-color: rgba(139, 84, 84, 1);
-	border-radius: 2px;
-	height: 50px;
-	line-height: 50px;
-	margin: 0px 10px;
+	line-height: 20px;
+	color: rgba(255,255,255, 0.5);
 }
-#menus span{
+#cafeteria .info{
+	position: absolute;
+	top: 10px;
+	right: 10px;
 	color: white;
-	font-family: monospace, cursive;
-	font-size: 2em;
-	font-weight: 500;
+	transition: 0.5s;
 }
-#produtos{
-	font-size: 0.5em;
-	display: block;
-	margin: 0px 10px;
-	text-align: center;
+#cafeteria .status{
+	background-color: #f8f8f8;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	text-align: left;
 }
-#conteudo{
+#cafeteria .status span{
 	position: relative;
-	top: 60px;
-	left: 0px;
+	font-size: 15px;
+	padding: 5px;
+	line-height: 20px;
+	font-weight: 500;
+	font-family: sans-serif;
+	color: gray;
+}
+#cafeteria .status i{
+	position: relative;
+	left: 0;
+	top: 5px;
+	font-size: 20px;
+	padding: 5px;
+	line-height: 15px;
+}
+#sucos-vitaminas{
+	background-image: linear-gradient(-45deg,#55a17b,#76df9e,#55a17b);
+}
+#btnBuscar{
+	position: fixed;
+	font-size: 1.2em;
+	bottom: 10px;
+	right: 10px;
+	width: 60px;
+	height: 60px;
+	line-height: 60px;
+	border-radius: 50%;
+	text-align: center;
+	background-color: #915b5b;
+	box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.4);
+	border: none;
+	color: white;
+}
+.animaCards{
+	transform: scale(1.1);
+	box-shadow: 0px 6px 5px silver;
 }
