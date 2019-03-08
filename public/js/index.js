@@ -1,20 +1,40 @@
+'use-strict';
+
 $(document).ready(function(){
-  buscarProduto();
-  abrirCard();
+  //buscarProduto();
+  loadMenus();
+
+
+
+
+
 });
 
-function loadProducts(){
-  $.get('http://localhost:3000/products',function(data, status){
-    console.log(data);
-    var obj = JSON.parse(data);
-    console.log(obj);
-    
-  });
-}
 
-function criarSecoes(){
+//Requisição GET
+
+//$.get('http://localhost:3000/products',function(data, status){
+    //console.log(data);
+    //return data;
+//});
   
-}
+
+//Javascript puro GET
+var products = '';
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+       // Typical action to be performed when the document is ready:
+       products = xhttp.responseText;
+    }
+};
+xhttp.open("GET", "http://localhost:3000/products", false);
+xhttp.send();
+var produtos = JSON.parse(products);
+
+
+
+
 //Função de Busca
 function buscarProduto(){
   var btnBuscar = document.getElementById('btnBuscar');
@@ -22,31 +42,135 @@ function buscarProduto(){
     console.log('Pesquisar');
   });
 }
-
-
-function abrirCard(){
-  var stado = false;
-  let btnAbre = document.querySelector('#abre');
-  var produtos = [
-    {
-      "nome":"Tapioca Nordestina",
-      "valor":"7,90"
-    },
-    {
-      "nome":"Tapioca Catufrango",
-      "valor":"6,90"
-    },
-    {
-      "nome":"Tapioca Frango",
-      "valor":"4,50"
-    },
-    {
-      "nome":"Tapioca Sem Recheio",
-      "valor":"1,80"
-    }
+//Array de teste
+var cafeteria = {
+  "secao":"Cafeteria",
+  "slug":"cafeteria",
+  "produtos":[
+  {
+    "nome":"Tapioca Nordestina",
+    "valor":"7,90",
+    "descricao":"tapioca feita com carne de sol",
+    "curtiu": false,
+    "mensagem": ""
+  },
+  {
+    "nome":"Tapioca Catufrango",
+    "valor":"6,90",
+    "descricao":"tapioca com frango e catupiry",
+    "curtiu": false,
+    "mensagem": ""
+  },
+  {
+    "nome":"Tapioca Frango",
+    "valor":"4,50",
+    "descricao":"tapioca de frango desfiado",
+    "curtiu": false,
+    "mensagem": ""
+  },
+  {
+    "nome":"Tapioca Sem Recheio",
+    "valor":"1,80",
+    "descricao":"tapioca basica sem conteudo",
+    "curtiu": false,
+    "mensagem": ""
+  },
+  {
+    "nome":"Café P",
+    "valor":"1,20",
+    "descricao":"Café pequeno (80ml)",
+    "curtiu": false,
+    "mensagem": ""
+  }
 ]
+}
 
-  var lista = document.querySelector('#lista');
+var sucosVitamina = {
+"secao":"Sucos e Vitaminas",
+"slug":"sucos-vitaminas",
+"produtos":[
+  {
+    "nome":"Suco de Cajú",
+    "valor":"4,00",
+    "descricao":"Suco da polpa de cajú",
+    "curtiu": false,
+    "mensagem": ""
+  },
+  {
+    "nome":"Vitamina de Manga",
+    "valor":"5,50",
+    "descricao":"Vitamina da polpa de manga",
+    "curtiu": false,
+    "mensagem": ""
+  }
+]
+}
+// Menus de Testes
+//var menus = [cafeteria, sucosVitamina];
+
+
+
+//Cria menus dinamicamente
+function loadMenus(){
+  if(produtos != undefined){
+    produtos.forEach(function(element,index){
+      criarMenu(element.secao,element.produtos,element.slug);
+    });
+  }else{
+    alert('Sem produtos Cadastrados :(')
+  }
+  
+}
+
+function criarMenu(secaoName,secaoProdutos,idSecao){
+  //Recuperando referencia da div conteudo
+  let divConteudoLista = document.getElementById('conteudoLista');
+
+  //Criação do elemento menu
+  let card = document.createElement('div');
+  card.classList.add('card');
+
+  //Criação do icone do menu
+  var icone = document.createElement('i');
+  icone.classList.add('material-icons');
+  icone.innerHTML = 'local_cafe';
+
+  //Criação do nome do menu
+  var spanTitulo = document.createElement('span');
+  spanTitulo.innerHTML = secaoName;
+
+  //Criação de botão de abertura de lista
+  var spanAbreLista = document.createElement('span');
+  spanAbreLista.classList.add('abreLista');
+  spanAbreLista.id = idSecao;
+  var iconSpanAbreLista = document.createElement('i');
+  iconSpanAbreLista.classList.add('material-icons');
+  iconSpanAbreLista.innerHTML = 'keyboard_arrow_down';
+  spanAbreLista.append(iconSpanAbreLista);
+
+  //Adicionando nome, icones, e botão de abrir lista
+  card.append(icone);
+  card.append(spanTitulo);
+  card.append(spanAbreLista);
+
+  //Cria ul para listar produtos
+  var listaItens = document.createElement('ul');
+  listaItens.id = idSecao + '-list';
+
+  //Adicionando os menus ao conteudo da pagina
+  divConteudoLista.append(card);
+  divConteudoLista.append(listaItens);
+
+  //Metodo que cria a lista
+  abrirCard(spanAbreLista.id, listaItens.id, secaoProdutos)
+}
+
+function abrirCard(idBotao,idLista,produtos){
+  var stado = false;
+  let btnAbre = document.querySelector('#'+idBotao);
+  
+
+  var lista = document.querySelector('#'+idLista);
   
   
 
@@ -56,8 +180,9 @@ function abrirCard(){
     if(stado == false){
       //Muda Icone
       btnAbre.childNodes[0].innerHTML = 'keyboard_arrow_up';
-      
-      produtos.forEach(function(elemento, index){
+
+      //Cria lista de itens
+      produtos.forEach(function(elemento){
         var item = document.createElement('li');
         var valorItem = document.createElement('span');
         valorItem.innerHTML = elemento.valor;
@@ -65,7 +190,7 @@ function abrirCard(){
         item.append(valorItem);
         item.classList.add('produtos');
         lista.append(item);
-        detalhesItem(item);
+        detalhesItem(item,produtos);
       });
       stado = !stado;
     }else{
@@ -82,16 +207,40 @@ function abrirCard(){
   });
 }
 
-function detalhesItem(obj){
+function detalhesItem(obj,secao){
   let stado = false;
 
   obj.addEventListener('click', function(){
+    
 
     if(stado == false){
+      
+      //cria elementos dinamicamente
+      let divDetalhes = document.createElement('div');
+      divDetalhes.classList.add('detalhesProdutos');
+      let desc = document.createElement('span');
+
+      //forEach para verificação de itens
+      let valorDesc = '';
+      let nomeObjeto = Array.from(obj.childNodes)
+      secao.forEach(function(item, index){
+        console.log(item.nome);
+        if(item.nome == nomeObjeto[0].data){
+          valorDesc = item.descricao;
+        }
+      });
+      console.log(valorDesc);
+      console.log(nomeObjeto[0])
+      
+      //Atribui valores
+      desc.innerHTML = valorDesc;
+      divDetalhes.append(desc);
+      obj.append(divDetalhes);
       obj.classList.add('detalhes');
       stado = !stado;
     }else{
       obj.classList.remove('detalhes');
+      obj.removeChild(obj.childNodes[2])
       stado = !stado;
     }
     
