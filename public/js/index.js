@@ -1,4 +1,4 @@
-'use-strict';
+
 
 $(document).ready(function(){
   //buscarProduto();
@@ -112,13 +112,11 @@ var sucosVitamina = {
 
 //Cria menus dinamicamente
 function loadMenus(){
-  if(produtos != undefined){
-    produtos.forEach(function(element,index){
-      criarMenu(element.secao,element.produtos,element.slug);
-    });
-  }else{
-    alert('Sem produtos Cadastrados :(')
-  }
+  
+  produtos.forEach(function(element,index){
+    criarMenu(element.secao,element.produtos,element.slug);
+  });
+  
   
 }
 
