@@ -119,6 +119,11 @@ nav{
 .abreLista i{
 	font-size: 1.5em;
 }
+.cardOff{
+	display: none;
+}
+
+
 /*Float Button*/
 #btnBuscar{
 	position: fixed;
@@ -149,6 +154,9 @@ nav{
 	color: white;
 	font-size: 1em;
 }
-
+#navBar{
+	font-size: 1em;
+	background-color: #915b5b;
+}
 
 

@@ -1,8 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-
 var produtos = require('./controlers/products.js')
-
 
 const app = express()
 
@@ -13,11 +11,12 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended:false }))
 
 //Serve Arquivos css e js
-app.use(express.static('public'))
+app.use(express.static(__dirname + '/public'))
 
 //Rotas
 app.get('/', (req, res)=>{
     res.status(200).sendFile(__dirname + '/index.html' )
+    
 });
 
 app.get('/admin', (req, res)=>{
