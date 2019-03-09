@@ -1,8 +1,8 @@
 
 $(document).ready(function(){
   
-  abreCategorias('#abreCafeteria');
-  abreCategorias('#abreSucosVitaminas');
+  abreCategorias();
+  criarLista();
 
 });
 
@@ -107,20 +107,57 @@ var sucosVitamina = {
 var menus = [cafeteria, sucosVitamina];
 
 //Função de abrir categorias
-function abreCategorias(id){
-  var btnCateg = document.querySelector(id);
-  var state = false;
-  btnCateg.addEventListener('click',(e)=>{
-    if(state == false){
-      e.target.innerHTML = 'keyboard_arrow_up';
-      
-      state = !state;
-    }else{
-      e.target.innerHTML = 'keyboard_arrow_down';
-      
-      state = !state;
-    }
+function abreCategorias(){
+  var btnsCategorias = document.querySelectorAll('.abreLista');
+  var estadoCafeteria = false;
+  var estadoSucosVitaminas = false;
+  var cardsCategorias = Array.from(btnsCategorias);
+  cardsCategorias.forEach((e)=>{
     
+    e.addEventListener('click',(e)=>{
+
+      if(e.target.parentNode.id == 'abreCafeteria'){
+        
+        if(estadoCafeteria == false){
+          e.target.innerHTML = 'keyboard_arrow_up'
+          estadoCafeteria = !estadoCafeteria
+        }else {
+          e.target.innerHTML = 'keyboard_arrow_down'
+          estadoCafeteria = !estadoCafeteria
+        }
+        
+
+      }
+      if(e.target.parentNode.id == 'abreSucosVitaminas'){
+        if(estadoSucosVitaminas == false){
+          e.target.innerHTML = 'keyboard_arrow_up'
+          estadoSucosVitaminas = !estadoSucosVitaminas
+        }else {
+          e.target.innerHTML = 'keyboard_arrow_down'
+          estadoSucosVitaminas = !estadoSucosVitaminas
+        }
+      }
+
+    });
+
+    
+
+  });
+  
+  
+}
+
+//Função que cria lista de itens
+function criarLista(){
+  var ul = document.createElement('ul');
+  produtos.forEach((element, index)=> {
+    // statements
+    console.log(element.produtos)
   });
 }
+
+
+
+
+
 
