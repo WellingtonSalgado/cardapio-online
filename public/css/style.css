@@ -6,7 +6,7 @@
 	user-select: none;
 }
 body{
-	background-image: linear-gradient(45deg,#ecd7d3,#dad3d2);
+	background-color: #dbcdcb;
 }
 nav{
 	text-align: center;
@@ -119,9 +119,130 @@ nav{
 .abreLista i{
 	font-size: 1.5em;
 }
-.cardOff{
-	display: none;
+/*Personalização da pagina admin*/
+
+#menuAdmin{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 60px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #915b5b;
+	font-size: 1em;
+	box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.3);
+	z-index: 99;
 }
+#menuAdmin span{
+	color: white;
+}
+.estatisticas{
+	position: relative;
+	text-align: left;
+	top: 60px;
+	left: 0px;
+}
+.estatisticas span{
+	font-size: 0.9em;
+	color: rgba(0, 0, 0, 0.5);
+}
+.listaEstatisticas{
+	position: relative;
+	top: 60px;
+	left: 0px;
+	text-align: left;
+	color: rgba(0, 0, 0, 0.4);
+}
+.listaEstatisticas div{
+	font-size: 0.8em;
+	margin: 5px 0px;
+	color: rgba(0, 0, 0, 0.4);
+}
+.listaEstatisticas span{
+	font-size: 0.8em;
+	float: right;
+	position: relative;
+	top: 5px;
+	color: rgba(0, 0, 0, 0.6);
+}
+
+#containerCadastro{
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: none;
+	justify-content: center;
+	align-items: center;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.7);
+	z-index: 2000;
+}
+#cadastroProdutos{
+	position: relative;
+	background-color: white;
+	top: -20px;
+	height: 400px;
+	width: 300px;
+	border-radius: 5px;
+}
+#cadastroProdutos form{
+	position: absolute;
+	width: 80%;
+	height: 90%;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	font-size: 0.7em;
+	padding: 10px;
+}
+#cadastroProdutos h3{
+	margin: 0px;
+	padding: 0px;
+	color: rgba(0, 0, 0, 0.8);
+}
+#cadastroProdutos input{
+	font-size: 0.9em;
+	margin: 30px 0px;
+	text-align: center;
+
+}
+#cadastroProdutos input[type='submit']{
+	position: absolute;
+	bottom: 0;
+	color: rgba(255,255, 255, 1);
+	text-transform: uppercase;
+	left: 0;
+	margin: 0;
+	font-size: 0.8em;
+	background-color: #9e7b76;
+	width: 100%;
+	padding: 5px 10px;
+	border: none;
+	border-radius: 2px;
+	box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
+	text-align: center;
+}
+#cadastroProdutos select{
+	font-size: 0.8em;
+	color: rgba(0, 0, 0, 0.7);
+	margin-top: 10px;
+}
+#btnFechar{
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	display: flex;
+	top: 5px;
+	right: 5px;
+	border: 2px solid rgba(0, 0, 0, 0.9);
+	border-radius: 50%;
+	justify-content: center;
+	align-items: center;
+}
+
 
 
 /*Float Button*/
@@ -140,23 +261,18 @@ nav{
 	border: none;
 	color: white;
 }
-
-
-/*Pagina Admin*/
-
-#menuAdmin{
-	background-color: #915b5b;
-	box-shadow: 0px 3px 5px silver;
-
+#floatAdd{
+	position: fixed;
+	bottom: 15px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	right: 15px;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.3);
+	background-color: #a35564;
+	color: rgba(255, 255, 255, 0.8);
+	z-index: 1000;
 }
-
-#menuAdmin span{
-	color: white;
-	font-size: 1em;
-}
-#navBar{
-	font-size: 1em;
-	background-color: #915b5b;
-}
-
-

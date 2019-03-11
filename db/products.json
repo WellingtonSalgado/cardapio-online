@@ -1,65 +1,65 @@
 [
-    {
-        "secao":"Cafeteria",
-        "slug":"cafeteria",
-        "produtos":[
+  {
+      "secao":"Cafeteria",
+      "slug":"cafeteria",
+      "produtos":[
+      {
+        "nome":"Tapioca Nordestina",
+        "valor":"7,90",
+        "descricao":"tapioca feita com carne de sol",
+        "curtiu": false,
+        "mensagem": ""
+      },
+      {
+        "nome":"Tapioca Catufrango",
+        "valor":"6,90",
+        "descricao":"tapioca com frango e catupiry",
+        "curtiu": false,
+        "mensagem": ""
+      },
+      {
+        "nome":"Tapioca Frango",
+        "valor":"4,50",
+        "descricao":"tapioca de frango desfiado",
+        "curtiu": false,
+        "mensagem": ""
+      },
+      {
+        "nome":"Tapioca Sem Recheio",
+        "valor":"1,80",
+        "descricao":"tapioca basica sem conteudo",
+        "curtiu": false,
+        "mensagem": ""
+      },
+      {
+        "nome":"Café P",
+        "valor":"1,20",
+        "descricao":"Café pequeno (80ml)",
+        "curtiu": false,
+        "mensagem": ""
+      }
+    ]
+  },
+
+  {
+      "secao":"Sucos e Vitaminas",
+      "slug":"sucos-vitaminas",
+      "produtos":
+      [
         {
-          "nome":"Tapioca Nordestina",
-          "valor":"7,90",
-          "descricao":"tapioca feita com carne de sol",
+          "nome":"Suco de Cajú",
+          "valor":"4,00",
+          "descricao":"Suco da polpa de cajú",
           "curtiu": false,
           "mensagem": ""
         },
         {
-          "nome":"Tapioca Catufrango",
-          "valor":"6,90",
-          "descricao":"tapioca com frango e catupiry",
-          "curtiu": false,
-          "mensagem": ""
-        },
-        {
-          "nome":"Tapioca Frango",
-          "valor":"4,50",
-          "descricao":"tapioca de frango desfiado",
-          "curtiu": false,
-          "mensagem": ""
-        },
-        {
-          "nome":"Tapioca Sem Recheio",
-          "valor":"1,80",
-          "descricao":"tapioca basica sem conteudo",
-          "curtiu": false,
-          "mensagem": ""
-        },
-        {
-          "nome":"Café P",
-          "valor":"1,20",
-          "descricao":"Café pequeno (80ml)",
+          "nome":"Vitamina de Manga",
+          "valor":"5,50",
+          "descricao":"Vitamina da polpa de manga",
           "curtiu": false,
           "mensagem": ""
         }
       ]
-    },
-
-    {
-        "secao":"Sucos e Vitaminas",
-        "slug":"sucos-vitaminas",
-        "produtos":
-        [
-          {
-            "nome":"Suco de Cajú",
-            "valor":"4,00",
-            "descricao":"Suco da polpa de cajú",
-            "curtiu": false,
-            "mensagem": ""
-          },
-          {
-            "nome":"Vitamina de Manga",
-            "valor":"5,50",
-            "descricao":"Vitamina da polpa de manga",
-            "curtiu": false,
-            "mensagem": ""
-          }
-        ]
-    }
+  }
 ]

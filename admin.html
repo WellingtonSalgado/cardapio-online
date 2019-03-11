@@ -23,15 +23,40 @@
 
     <!--Container-->
     <div id="conteudo">
-        <div id="navBar">
-            <span id="estatisticas">Estatisticas</span>
+        <div class="estatisticas">
+            <span>Estatisticas:</span>
+        </div>
+        <div class="listaEstatisticas">
+            <div id="produtosCadastrados">Produtos Cadastrados<span>15 und.</span></div>
+            <div id="categoriasCadastradas">Categorias Cadastradas<span>5 categ.</span></div>
+            <div id="acessos">Acessos<span>56 vez.</span></div>
+            <div id="curtidas">Curtidas<span>5 vez.</span></div>
         </div>
 
+        <!--Div Cadastro de produtos-->
+        <div id="containerCadastro">
+            
+            <div id="cadastroProdutos">
+                <div id="btnFechar"><i class="material-icons">close</i></div>
+                <form>
+                    <h3>Cadastro</h3>
+                    <input type="text" placeholder="Nome do produto"><br>
+                    <input type="text" placeholder="Valor do produtos"><br>
+                    <select name="categorias" id="categorias">
+                        <option value="default" selected>--Selecione--</option>
+                        <option value="cafeteria">cafeteria</option>
+                    </select><br>
+                    <input type="submit" value="cadastrar" id="btnCadastrar">
+                </form>
+            </div>
+        </div>
 
     </div>
 
-    <!--Float Button-->
     
+
+    <!--Float Button-->
+    <div id="floatAdd"><i class="material-icons">add</i></div>
 
 </body>
 </html>
