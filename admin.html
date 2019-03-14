@@ -27,10 +27,10 @@
             <span>Estatisticas:</span>
         </div>
         <div class="listaEstatisticas">
-            <div id="produtosCadastrados">Produtos Cadastrados<span>15 und.</span></div>
-            <div id="categoriasCadastradas">Categorias Cadastradas<span>5 categ.</span></div>
-            <div id="acessos">Acessos<span>56 vez.</span></div>
-            <div id="curtidas">Curtidas<span>5 vez.</span></div>
+            <div id="produtosCadastrados">Prod. Cadastrados<span>0 und.</span></div>
+            <div id="categoriasCadastradas">Categ. Cadastradas<span>0 categ.</span></div>
+            <div id="acessos">Acessos<span>0 vez.</span></div>
+            <div id="curtidas">Curtidas<span>0 vez.</span></div>
         </div>
 
         <!--Div Cadastro de produtos-->
@@ -40,11 +40,11 @@
                 <div id="btnFechar"><i class="material-icons">close</i></div>
                 <form>
                     <h3>Cadastro</h3>
-                    <input type="text" placeholder="Nome do produto"><br>
-                    <input type="text" placeholder="Valor do produtos"><br>
-                    <select name="categorias" id="categorias">
-                        <option value="default" selected>--Selecione--</option>
-                        <option value="cafeteria">cafeteria</option>
+                    <input type="text" id="produto" placeholder="Produto"><br>
+                    <input type="number" id="valor" placeholder="Valor: 0,00"><br>
+                    <input type="text" id="descricao" placeholder="Descrição:">
+                    <select id="categoria">
+                
                     </select><br>
                     <input type="submit" value="cadastrar" id="btnCadastrar">
                 </form>

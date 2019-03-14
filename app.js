@@ -1,6 +1,9 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+//Import dos dados do db
 var produtos = require('./controlers/products.js')
+//Import do validate
+var validate = require('./controlers/validate.js')
 
 const app = express()
 
@@ -34,8 +37,20 @@ app.post('/admin', (req, res)=>{
 });
 
 app.get('/products', (req, res)=>{
-    res.status(200).send(produtos);
+    res.status(200).send(produtos.read());
 })
+
+app.post('/products',(req, res)=>{
+    let status = validate(req.body);
+    console.log(status);
+    if(status){
+        produtos.post(req.body);
+    }else{
+        console.error('obj nao aceito');
+    }
+    
+    res.status(200).send('Produto cadastrado');
+});
 
 //Servidor 
 app.listen(PORT, ()=>{
