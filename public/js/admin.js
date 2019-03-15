@@ -3,6 +3,8 @@ $(document).ready(function(){
     fecharCadastro();
     cadastrar();
     atualizarEstatisticas();
+    salvarProdutos();
+    recuperaProdutos();
 });
 
 //Get no servidor
@@ -13,8 +15,22 @@ xhtp.onload = function(){
         produtos.push(JSON.parse(this.responseText));
     }
 }
-xhtp.open('get', 'http://192.168.3.108:3000/products',true);
+xhtp.open('get', 'http://192.168.3.108:3000/products',false);
 xhtp.send();
+
+//Salva no sessionstorage
+function salvarProdutos(){
+    sessionStorage.setItem('produtos', JSON.stringify(produtos[0]));
+}
+function recuperaProdutos(){
+    var products = JSON.parse(sessionStorage.getItem('produtos'));
+    return products; 
+}
+//Valores do sessionstorage
+var produt = recuperaProdutos();
+
+
+
 
 //Post no servidor
 function postProdutos(obj){
@@ -30,10 +46,18 @@ function atualizarEstatisticas(){
     let produtosCadastrados = document.querySelector('#produtosCadastrados');
     var numeroCategorias = 0;
     var numeroProdutos = 0;
-    produtos[0].forEach(function(elem){
-        numeroCategorias ++;
-        numeroProdutos += elem.produtos.length;
-    })
+    if(produt !== null){
+        produt.forEach(function(elem){
+            numeroCategorias ++;
+            numeroProdutos += elem.produtos.length;
+        })
+    }else{
+        produtos[0].forEach(function(elem){
+            numeroCategorias ++;
+            numeroProdutos += elem.produtos.length;
+        })
+    }
+    
     //Atualizando campos
     categoriasCadastradas.childNodes[1].innerHTML= `${numeroCategorias} categ.`;
     produtosCadastrados.childNodes[1].innerHTML = `${numeroProdutos} und.`;
@@ -46,12 +70,8 @@ function addProduto(){
     let btnAdd = document.querySelector('#floatAdd');
     let containerCadastro = document.querySelector('#containerCadastro');
     let selectCategoria = document.querySelector('#categoria');
-    
-    
-    btnAdd.addEventListener('click',(e)=>{
-        
-        console.log('categorias: '+selectCategoria.length);
-        console.log('produtos: '+ produtos[0].length)
+
+    btnAdd.addEventListener('click',()=>{
         
         containerCadastro.style.display = 'flex';
         if(selectCategoria.length == 0){
@@ -61,7 +81,7 @@ function addProduto(){
             optionDefault.innerHTML = '--Categoria--';
             selectCategoria.appendChild(optionDefault);
             //ForEach no array de produtos
-            produtos[0].forEach((element,index) => {
+            produt.forEach((element,index) => {
                 let option = document.createElement('option');
                 option.value = element.secao;
                 option.innerHTML = element.secao;

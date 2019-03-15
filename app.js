@@ -23,7 +23,9 @@ app.get('/', (req, res)=>{
 });
 
 app.get('/admin', (req, res)=>{
+    //res.send(`${ip}`);
     res.status(200).sendFile(__dirname + '/admin.html');
+    
 });
 
 app.post('/admin', (req, res)=>{
@@ -55,5 +57,5 @@ app.post('/products',(req, res)=>{
 //Servidor 
 app.listen(PORT, ()=>{
     console.log(`Servidor ouvindo na porta: ${PORT}`)
-    //console.log(produtos)
+
 })
