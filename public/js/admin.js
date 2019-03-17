@@ -15,7 +15,7 @@ xhtp.onload = function(){
         produtos.push(JSON.parse(this.responseText));
     }
 }
-xhtp.open('get', 'http://192.168.3.108:3000/products',false);
+xhtp.open('get', 'http://192.168.3.109:3000/products',false);
 xhtp.send();
 
 //Salva no sessionstorage
@@ -35,7 +35,7 @@ var produt = recuperaProdutos();
 //Post no servidor
 function postProdutos(obj){
     let xhttpost = new XMLHttpRequest();
-    xhttpost.open('POST','http://192.168.3.108:3000/products',true);
+    xhttpost.open('POST','http://192.168.3.109:3000/products',true);
     xhttpost.setRequestHeader('Content-type','application/x-www-form-urlencoded');
     xhttpost.send(`nome=${obj.nome}&valor=${obj.valor}&descricao=${obj.descricao}&categoria=${obj.categoria}`);
 }

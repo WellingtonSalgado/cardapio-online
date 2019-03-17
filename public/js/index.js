@@ -28,7 +28,7 @@ xhttp.onreadystatechange = function() {
        products = xhttp.responseText;
     }
 };
-xhttp.open("GET", "http://192.168.3.108:3000/products", false);
+xhttp.open("GET", "http://192.168.3.109:3000/products", false);
 xhttp.send();
 var produtos = JSON.parse(products);
 
@@ -67,7 +67,40 @@ function criarMenu(secaoName,secaoProdutos,idSecao){
   //Criação do icone do menu
   var icone = document.createElement('i');
   icone.classList.add('material-icons');
-  icone.innerHTML = 'local_cafe';
+  switch(secaoName){
+    case "Cafeteria":
+      icone.innerHTML = 'local_cafe';
+      break;
+    case "Sucos e Vitaminas":
+      icone.innerHTML = 'local_bar';
+      break;
+    case "Bebidas":
+      icone.innerHTML = 'local_bar';
+      break;
+    case "Sanduiches":
+      icone.innerHTML = 'local_pizza';
+      break;
+    case "Beirutes":
+      icone.innerHTML = 'local_pizza';
+      break;
+    case "Sobremesas":
+      icone.innerHTML = 'cake';
+      break;
+    case "Petiscos":
+      icone.innerHTML = 'bubble_chart';
+      break;
+    case "Self Service":
+      icone.innerHTML = 'restaurant_menu';
+      break;
+    case "A la Carte":
+      icone.innerHTML = 'room_service';
+      break;
+    default:
+      icone.innerHTML = 'restaurant';
+  }
+  
+  
+  
 
   //Criação do nome do menu
   var spanTitulo = document.createElement('span');
