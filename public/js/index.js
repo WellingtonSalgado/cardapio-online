@@ -3,13 +3,36 @@
 $(document).ready(function(){
   //buscarProduto();
   loadMenus();
-
+  pesquisar();
 
 
 
 
 });
 
+function pesquisar(){
+  let btnPesquisa = document.getElementById('iconeMenu');
+  let state = false;
+  var input = document.createElement('input');
+  btnPesquisa.addEventListener('click', ()=>{
+    if(state == false){
+      btnPesquisa.classList.add('pesquisar');
+      input.type = 'search';
+      btnPesquisa.appendChild(input);
+      input.focus();
+      state = true;
+    }
+    
+  })
+
+  btnPesquisa.addEventListener('focusout',()=>{
+    console.log('Perdeu o foco');
+    input.value = '';
+    input.parentNode.removeChild(input);
+    btnPesquisa.classList.remove('pesquisar');
+    state = false;
+  })
+}
 
 //Requisição GET
 
