@@ -10,27 +10,117 @@ $(document).ready(function(){
 
 });
 
+
+
 function pesquisar(){
+  var arrayPesquisa = ['Café P','tapioca nordestina','tapioca de manteiga','suco de cajú', 'Café G', 'suco de manga']
   let btnPesquisa = document.getElementById('iconeMenu');
   let state = false;
+  var produtoPesquisado = '';
   var input = document.createElement('input');
+  var div = document.createElement('div');
   btnPesquisa.addEventListener('click', ()=>{
     if(state == false){
       btnPesquisa.classList.add('pesquisar');
       input.type = 'search';
       btnPesquisa.appendChild(input);
+      btnPesquisa.appendChild(div);
       input.focus();
       state = true;
     }
     
   })
 
+  //Evento do Input
+  input.addEventListener('input', (e)=>{
+    
+    div.childNodes.forEach((e)=>{
+      div.removeChild(e);
+    })
+    
+    
+    produtoPesquisado = input.value.trim();
+    //Ordena os produtos
+    arrayPesquisa = arrayPesquisa.sort();
+    arrayPesquisa.forEach(function(item, index){
+      if(input.value.trim() != '' ){
+        //Verifica se contem produtos que correspondem a pesquisa
+        if(item.includes(produtoPesquisado) && produtoPesquisado.length >= 3){
+          //console.log(`${produtoPesquisado} in ${item}`);
+          
+          var itens = document.createElement('p');
+
+          //Criar eventos de click e chama funçao de busca
+          itens.addEventListener('click',(e)=>{
+          
+            buscarProduto(e.target.innerHTML);
+          })
+
+
+          itens.innerHTML = item;
+          //Adiciona os itens
+          div.appendChild(itens);
+          
+          //Verifica a presença de itens repetidos
+          var list = [];
+          div.childNodes.forEach((elemento,index)=>{
+            if(elemento.innerHTML.includes(itens.innerHTML)){
+              
+              list.push(elemento.innerHTML);
+              list.forEach(()=>{
+
+                if(list.length > 1){
+                  //Verifica a exitencia do item
+                  if(div.contains(elemento)){
+                    div.removeChild(elemento);
+                  }
+                  
+                }
+              })
+            }
+            
+             
+          })
+          
+          
+          
+        }
+        
+      }
+      
+    })
+
+    //Limpa toda a pesquisa e suas variaveis
+    if(e.inputType == 'deleteContentBackward'){
+      input.value = '';
+      produtoPesquisado = '';
+      div.childNodes.forEach((i)=>{
+        div.removeChild(i);
+      })
+      if(div.childNodes.length >= 1){
+        div.removeChild(div.firstChild)
+      }
+      
+    }
+    
+  });
+
   btnPesquisa.addEventListener('focusout',()=>{
-    console.log('Perdeu o foco');
-    input.value = '';
-    input.parentNode.removeChild(input);
-    btnPesquisa.classList.remove('pesquisar');
-    state = false;
+    setTimeout(()=>{
+      input.value = '';
+      input.parentNode.removeChild(input);
+      btnPesquisa.classList.remove('pesquisar');
+      state = false;
+      div.childNodes.forEach((i)=>{
+      
+        div.removeChild(i);
+      })
+      if(div.childNodes.length >= 1){
+        div.removeChild(div.firstChild)
+      }
+      btnPesquisa.removeChild(div);
+    },300)
+    
   })
 }
 
@@ -59,11 +149,26 @@ var produtos = JSON.parse(products);
 
 
 //Função de Busca
-function buscarProduto(){
-  var btnBuscar = document.getElementById('btnBuscar');
-  btnBuscar.addEventListener('click', function(){
-    console.log('Pesquisar');
-  });
+function buscarProduto(produtoPesquisado){
+  var cardSecao = document.getElementById('cafeteria');
+  var listSecao = document.getElementById('cafeteria-list');
+  scrollTo(cardSecao.offsetLeft, cardSecao.offsetTop);
+  //Abre o card
+  cardSecao.click()
+  //Busca o elemento pesquisado
+  listSecao.childNodes.forEach((elemt)=>{
+    elemt.childNodes.forEach((e)=>{
+      //Adiciona num array
+      var produtoText = e.textContent.split('\n');
+      if(produtoText[0] === produtoPesquisado){
+        //Abre os detalhes do item
+        elemt.click();
+      }
+      
+      
+    })
+  })
+
 }
 
 
