@@ -13,21 +13,46 @@ $(document).ready(function(){
 
 
 function pesquisar(){
-  var arrayPesquisa = ['Café P','tapioca nordestina','tapioca de manteiga','suco de cajú', 'Café G', 'suco de manga']
+  var arrayProducts = produtos;
+  //var arrayPesquisa = ['café P','tapioca nordestina','tapioca de manteiga','suco de cajú', 'café G', 'suco de manga']
+  var arrayPesquisa = [];
+  
+  //Adiciona ao array de pesquisa
+  arrayProducts.forEach((e,i)=>{
+    e.produtos.forEach((p)=>{
+      arrayPesquisa.push(p.nome);
+    })
+  });
+  
+  
   let btnPesquisa = document.getElementById('iconeMenu');
   let state = false;
   var produtoPesquisado = '';
+  var secao = '';
+  //Span que abre lista (Aqui deve ser colocado a secao)
+  var spansAbreLista = document.querySelectorAll('.abreLista');
   var input = document.createElement('input');
   var div = document.createElement('div');
   btnPesquisa.addEventListener('click', ()=>{
+    //Verifica estado do botao de pesquisa
     if(state == false){
+      //Verifica se a seção ja esta aberta e fecha a mesma
+      spansAbreLista.forEach((s)=>{
+        if(s.openState){
+          s.click();
+        }
+      })
+      
       btnPesquisa.classList.add('pesquisar');
       input.type = 'search';
       btnPesquisa.appendChild(input);
       btnPesquisa.appendChild(div);
       input.focus();
       state = true;
+      
     }
+    
+    
     
   })
 
@@ -38,22 +63,31 @@ function pesquisar(){
       div.removeChild(e);
     })
     
-    
     produtoPesquisado = input.value.trim();
     //Ordena os produtos
     arrayPesquisa = arrayPesquisa.sort();
-    arrayPesquisa.forEach(function(item, index){
+    arrayPesquisa.forEach(function(item){
       if(input.value.trim() != '' ){
         //Verifica se contem produtos que correspondem a pesquisa
         if(item.includes(produtoPesquisado) && produtoPesquisado.length >= 3){
-          //console.log(`${produtoPesquisado} in ${item}`);
+          
           
           var itens = document.createElement('p');
 
           //Criar eventos de click e chama funçao de busca
           itens.addEventListener('click',(e)=>{
-          
-            buscarProduto(e.target.innerHTML);
+            var productSearch = e.target.innerHTML
+            //Verificar a secao do produto
+            arrayProducts.forEach(e => {
+              e.produtos.forEach(p =>{
+                if(p.nome == productSearch){
+                  
+                  secao = e.slug
+                }
+              })
+            })
+            productSearch = productSearch.toUpperCase();
+            buscarProduto(productSearch, secao);
           })
 
 
@@ -149,25 +183,35 @@ var produtos = JSON.parse(products);
 
 
 //Função de Busca
-function buscarProduto(produtoPesquisado){
-  var cardSecao = document.getElementById('cafeteria');
-  var listSecao = document.getElementById('cafeteria-list');
-  scrollTo(cardSecao.offsetLeft, cardSecao.offsetTop);
+function buscarProduto(produtoPesquisado, secaoPesquisada){
+  var cardSecao = document.getElementById(secaoPesquisada);
+  var listSecao = document.getElementById(`${secaoPesquisada}-list`);
+  
+  setTimeout(()=>{
+    scrollTo(cardSecao.offsetLeft, cardSecao.offsetTop);
+  },400)
+  
   //Abre o card
-  cardSecao.click()
-  //Busca o elemento pesquisado
-  listSecao.childNodes.forEach((elemt)=>{
-    elemt.childNodes.forEach((e)=>{
-      //Adiciona num array
-      var produtoText = e.textContent.split('\n');
-      if(produtoText[0] === produtoPesquisado){
-        //Abre os detalhes do item
-        elemt.click();
-      }
-      
-      
+  setTimeout(()=>{
+    cardSecao.click()
+
+    //Busca o elemento pesquisado
+    listSecao.childNodes.forEach((elemt)=>{
+      elemt.childNodes.forEach((e)=>{
+        //Adiciona num array
+        var produtoText = e.textContent.split('\n');
+
+        if(produtoText[0].toUpperCase() === produtoPesquisado){
+          //Abre os detalhes do item
+          elemt.click();
+        }
+
+
+      })
     })
-  })
+  },400);
+  
+  
 
 }
 
@@ -175,11 +219,11 @@ function buscarProduto(produtoPesquisado){
 //Cria menus dinamicamente
 function loadMenus(){
   if(produtos != undefined){
-    produtos.forEach(function(element,index){
+    produtos.forEach(function(element){
       criarMenu(element.secao,element.produtos,element.slug);
     });
   }else{
-    alert('Sem produtos Cadastrados :(')
+    alert('Ouve um erro no servidor :(')
   }
   
 }
@@ -238,6 +282,7 @@ function criarMenu(secaoName,secaoProdutos,idSecao){
   var spanAbreLista = document.createElement('span');
   spanAbreLista.classList.add('abreLista');
   spanAbreLista.id = idSecao;
+  spanAbreLista.openState = false;
   var iconSpanAbreLista = document.createElement('i');
   iconSpanAbreLista.classList.add('material-icons');
   iconSpanAbreLista.innerHTML = 'keyboard_arrow_down';
@@ -270,7 +315,9 @@ function abrirCard(idBotao,idLista,produtos){
   
 
   btnAbre.addEventListener('click',function(){
-    
+
+    //estado do botao 
+    btnAbre.openState = !btnAbre.openState;
 
     if(stado == false){
       //Muda Icone
@@ -319,13 +366,12 @@ function detalhesItem(obj,secao){
       let valorDesc = '';
       let nomeObjeto = Array.from(obj.childNodes)
       secao.forEach(function(item, index){
-        console.log(item.nome);
+        
         if(item.nome == nomeObjeto[0].data){
           valorDesc = item.descricao;
         }
       });
-      console.log(valorDesc);
-      console.log(nomeObjeto[0])
+      
       
       //Atribui valores
       desc.innerHTML = valorDesc;
