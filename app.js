@@ -46,7 +46,15 @@ app.post('/products',(req, res)=>{
     let status = validate(req.body);
     console.log(status);
     if(status){
-        produtos.post(req.body);
+        if (req.body.method == 'post') {
+            produtos.post(req.body); 
+            console.log('entrou no post')   
+        }
+        else if (req.body.method == 'delete') {
+            produtos.delete(req.body);
+            console.log('entrou no delete')
+        }
+        
     }else{
         console.error('obj nao aceito');
     }

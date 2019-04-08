@@ -5,6 +5,7 @@ $(document).ready(function(){
     atualizarEstatisticas();
     salvarProdutos();
     recuperaProdutos();
+    listarProdutos();
 });
 
 //Get no servidor
@@ -15,7 +16,7 @@ xhtp.onload = function(){
         produtos.push(JSON.parse(this.responseText));
     }
 }
-xhtp.open('get', 'http://192.168.3.109:3000/products',false);
+xhtp.open('get', 'http://192.168.1.5:3000/products',false);
 xhtp.send();
 
 //Salva no sessionstorage
@@ -33,11 +34,18 @@ var produt = recuperaProdutos();
 
 
 //Post no servidor
-function postProdutos(obj){
+function postProdutos(obj,method = 'post'){
     let xhttpost = new XMLHttpRequest();
-    xhttpost.open('POST','http://192.168.3.109:3000/products',true);
+    xhttpost.open('POST','http://192.168.1.5:3000/products',false);
     xhttpost.setRequestHeader('Content-type','application/x-www-form-urlencoded');
-    xhttpost.send(`nome=${obj.nome}&valor=${obj.valor}&descricao=${obj.descricao}&categoria=${obj.categoria}`);
+    xhttpost.send(`nome=${obj.nome}&valor=${obj.valor}&descricao=${obj.descricao}&categoria=${obj.categoria}&method=${method}`);
+}
+//Delete no servidor
+function deleteProdutos(produto,method = 'delete'){
+    let xhttpost2 = new XMLHttpRequest();
+    xhttpost2.open('POST','http://192.168.1.5:3000/products',false);
+    xhttpost2.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+    xhttpost2.send(`produto=${produto}&method=${method}`);
 }
 //Atualiza dados estatisticos
 
@@ -46,8 +54,8 @@ function atualizarEstatisticas(){
     let produtosCadastrados = document.querySelector('#produtosCadastrados');
     var numeroCategorias = 0;
     var numeroProdutos = 0;
-    if(produt !== null){
-        produt.forEach(function(elem){
+    if(produtos[0] !== null){
+        produtos[0].forEach(function(elem){
             numeroCategorias ++;
             numeroProdutos += elem.produtos.length;
         })
@@ -62,6 +70,47 @@ function atualizarEstatisticas(){
     categoriasCadastradas.childNodes[1].innerHTML= `${numeroCategorias} categ.`;
     produtosCadastrados.childNodes[1].innerHTML = `${numeroProdutos} und.`;
     
+    
+}
+
+//Listar os produtos
+function listarProdutos(){
+    let divListaProdutos = document.getElementById('listaProdutos');
+    let arrayProdutos = produtos[0];
+    arrayProdutos.forEach( function(categoria) {
+        categoria.produtos.forEach( function(produto) {
+            var divNome = document.createElement('div');
+            var spanEdit = document.createElement('span');
+            var iconeEdit = document.createElement('i');
+            var spanDelete = document.createElement('span');
+            var iconeDelete = document.createElement('i');
+            iconeEdit.classList.add('material-icons');
+            iconeEdit.innerHTML = 'edit';
+            iconeDelete.classList.add('material-icons');
+            iconeDelete.innerHTML = 'delete';
+            spanEdit.appendChild(iconeEdit);
+            spanEdit.addEventListener('click', function(e){
+                let produto = e.target.parentNode.parentNode.firstChild.textContent;
+                alert('edicao do produto : '+ produto)
+                
+            })
+            spanDelete.appendChild(iconeDelete);
+            spanDelete.addEventListener('click', function(e){
+                let produto = e.target.parentNode.parentNode.firstChild.textContent;
+                let divProduto = e.target.parentNode.parentNode;
+                alert('Deletando o produto : '+ produto);
+                divListaProdutos.removeChild(divProduto);
+                //Deletando o produto do servidor
+                deleteProdutos(produto);
+                window.reload();
+
+            })
+            divNome.innerHTML = produto.nome;
+            divNome.appendChild(spanEdit);
+            divNome.appendChild(spanDelete);
+            divListaProdutos.appendChild(divNome);
+        });
+    });
     
 }
 
@@ -145,5 +194,7 @@ function cadastrar(){
         descricao.value = '';
         selectCategoria.value = 'default';
         
+        window.reload();
     })
+    
 }

@@ -8,7 +8,7 @@ var produtos = {
         return JSON.parse(data);
     },
     post: function(obj){
-        var products = produtos.read();
+        let products = produtos.read();
         
         products.forEach(element => {
             if(element.secao == obj.categoria){
@@ -23,6 +23,20 @@ var produtos = {
                 fs.writeFileSync(arqProducts, JSON.stringify(products));
             }
             
+        });
+    },
+    delete: function(obj){
+        let products = produtos.read();
+        console.log(obj.method);
+        products.forEach(element => {
+            element.produtos.forEach( (produto, indice) => {
+                if (produto.nome == obj.produto) {
+                    element.produtos.splice(indice,1);
+                }
+            });
+            //Salva alterações no db
+            fs.writeFileSync(arqProducts,JSON.stringify(products));
+        
         });
     }
 }

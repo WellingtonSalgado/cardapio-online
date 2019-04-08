@@ -203,27 +203,15 @@ nav{
 	color: white;
 }
 #listaProdutos{
-	position: relative;
-	display: block;
-	background-color: whitesmoke;
-	border-radius: 3px;
-	padding: 10px;
-	box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.3);
-	height: 50px;
+	color: rgba(0,0,0,.5);
 }
-
-#secoes{
-	position: absolute;
-	font-size: 0.5em;
-	font-weight: 400;
-	color: rgba(0, 0, 0, 0.5);
+#listaProdutos div{
+	font-size: 0.8em;
+	padding-top: 10px;
+}
+#listaProdutos span{
 	float: right;
-	top: 10px;
-	right: 10px;
-	background-color: rgba(0, 0, 0, 0.2);
-	border-radius: 15px;
-	padding: 5px 10px;
-	
+	margin: 0px 10px;
 }
 .estatisticas{
 	position: relative;

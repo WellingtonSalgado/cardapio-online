@@ -175,7 +175,7 @@ xhttp.onreadystatechange = function() {
        products = xhttp.responseText;
     }
 };
-xhttp.open("GET", "http://192.168.3.109:3000/products", false);
+xhttp.open("GET", "http://192.168.1.5:3000/products", false);
 xhttp.send();
 var produtos = JSON.parse(products);
 
