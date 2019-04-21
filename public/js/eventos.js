@@ -1,6 +1,8 @@
-$(document).ready(function(){
+'use-strict';
+
+window.onload = function(){
     mostraEventos();
-});
+}
 
 
 function mostraEventos(){

@@ -146,7 +146,7 @@ nav{
 	box-shadow: 0px 2px 5px rgba(0,0, 0, 0.4);
 	transition: 0.4s;
 	border-radius: 3px;
-	height: 70px;
+	height: 80px;
 	background-color: rgba(163, 85, 100, 0.7);
 }
 .detalhes .detalhesProdutos span{
@@ -332,43 +332,3 @@ nav{
 	justify-content: center;
 	align-items: center;
 }
-
-
-
-/*Float Button*/
-#btnBuscar{
-	position: fixed;
-	font-size: 1.2em;
-	bottom: 10px;
-	right: 10px;
-	width: 60px;
-	height: 60px;
-	line-height: 60px;
-	border-radius: 50%;
-	text-align: center;
-	background-color: #915b5b;
-	box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.4);
-	border: none;
-	color: white;
-}
-#floatAdd{
-	position: fixed;
-	bottom: 15px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	right: 15px;
-	width: 60px;
-	height: 60px;
-	border-radius: 50%;
-	box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.3);
-	background-color: #a35564;
-	color: rgba(255, 255, 255, 0.8);
-	z-index: 1000;
-}
-#floatAdd i{
-	font-size: 1.2em;
-	font-weight: 400;
-}
-
-/*Animações*/
